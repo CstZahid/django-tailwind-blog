@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<article class="bg-white shadow p-6 rounded">
+    <h1 class="text-3xl font-bold mb-2">{{ post.title }}</h1>
+    <p class="text-sm text-gray-500 mb-4">by {{ post.author }} on {{ post.created_at|date:"F j, Y" }}</p>
+
+    {% if post.image %}
+        
+        <img src="{{ post.image.url }}" alt="Post Image" class="w-full max-w-md h-auto rounded mb-4" />
+    {% endif %}
+
+    <div class="text-lg whitespace-pre-line">
+        {{ post.content }}
+    </div>
+</article>
+
+<a href="{% url 'home' %}" 
+   class="mt-6 inline-block bg-blue-600 text-white font-semibold px-4 py-2 rounded shadow hover:bg-blue-700 transition">
+   ← Back to Home
+</a>
+{% endblock %}
